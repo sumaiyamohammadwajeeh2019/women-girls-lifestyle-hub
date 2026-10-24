@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+f<!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
@@ -41,6 +41,7 @@ input,select{width:100%;padding:11px;margin:6px 0;border:1px solid #ddd;border-r
   <div class="tab active" onclick="showTab(event,'makeup')">MAKEUP</div>
   <div class="tab" onclick="showTab(event,'cloth')">CLOTHING</div>
   <div class="tab" onclick="showTab(event,'health')">HEALTH</div>
+  <div class="tab" onclick="showTab(event,'wellness')">WELLNESS</div>
 </div>
 
 <div id="makeup" class="panel active">
@@ -165,8 +166,99 @@ input,select{width:100%;padding:11px;margin:6px 0;border:1px solid #ddd;border-r
   <div class="tip">Consult a doctor for medical advice. Informational only.</div>
 </div>
 
+<!-- WELLNESS -->
+<div id="wellness" class="panel">
+  <h3>Wellness & Self-Care</h3>
+
+  <div class="card">
+    <h4 style="color:#e91e63;margin:0 0 8px">Dress Code for Different Jobs</h4>
+    <ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px">
+      <li><b>Corporate/Office:</b> Blazer, formal shirt/blouse, tailored pants or pencil skirt, closed shoes, minimal jewelry.</li>
+      <li><b>Teaching:</b> Modest kurti/saree or formal top with pants, comfortable flats, light makeup.</li>
+      <li><b>Healthcare:</b> Scrubs/uniform, hair tied up, no dangling jewelry, closed-toe shoes.</li>
+      <li><b>Retail/Sales:</b> Smart casual, brand colors, name tag, neat grooming, comfortable shoes.</li>
+      <li><b>IT/Tech:</b> Casual (jeans, t-shirt/hoodie) but neat; sneakers allowed.</li>
+      <li><b>Creative/Media:</b> Expressive, trendy, statement pieces; smart-casual balance.</li>
+      <li><b>Field/Outdoor:</b> Durable fabrics, sun protection, closed shoes, hat/cap.</li>
+      <li><b>Remote/Home:</b> Comfortable yet camera-ready top; avoid overly casual bottoms for calls.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4 style="color:#e91e63;margin:0 0 8px">Mood Elevation Tips</h4>
+    <ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px">
+      <li>Start day with 5 min gratitude journaling.</li>
+      <li>Listen to upbeat music or a favorite podcast.</li>
+      <li>Get 10-15 min sunlight and fresh air.</li>
+      <li>Connect with a friend or loved one.</li>
+      <li>Do one small task to build momentum.</li>
+      <li>Limit doom-scrolling; set phone breaks.</li>
+      <li>Reward yourself with a small treat after tasks.</li>
+      <li>Practice deep breathing (4-7-8) when stressed.</li>
+      <li>Wear colors you love; dress up a little.</li>
+      <li>End day with a relaxing hobby (reading, art).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4 style="color:#e91e63;margin:0 0 8px">Menstrual Pain & Migraine Relief</h4>
+    <p style="font-size:13px;font-weight:600;margin:4px 0">Menstrual cramps:</p>
+    <ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px">
+      <li>Apply heat pad/hot water bottle on lower abdomen.</li>
+      <li>Gentle yoga: child's pose, cat-cow, reclined twist.</li>
+      <li>Drink warm water, ginger/peppermint tea.</li>
+      <li>Light exercise/walk releases endorphins.</li>
+      <li>Magnesium-rich foods (dark chocolate, nuts, spinach).</li>
+      <li>Over-the-counter pain relief as advised by doctor.</li>
+      <li>Avoid excess caffeine/salty foods; stay hydrated.</li>
+    </ul>
+    <p style="font-size:13px;font-weight:600;margin:8px 0 4px">Migraine:</p>
+    <ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px">
+      <li>Rest in a dark, quiet room; cold compress on forehead.</li>
+      <li>Hydrate; avoid triggers (bright light, strong smells, skipped meals).</li>
+      <li>Caffeine in small amount may help (if not a trigger).</li>
+      <li>Gentle neck/shoulder stretches; correct posture.</li>
+      <li>Track triggers in a diary; consult neurologist if frequent.</li>
+    </ul>
+    <div class="tip">Consult a doctor for persistent/severe pain.</div>
+  </div>
+
+  <div class="card">
+    <h4 style="color:#e91e63;margin:0 0 8px">Daily Morning Self-Care</h4>
+    <ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px">
+      <li>Wake at a consistent time; avoid snoozing.</li>
+      <li>Drink a glass of water first thing.</li>
+      <li>5-10 min stretching or yoga.</li>
+      <li>Wash face; moisturize; apply SPF.</li>
+      <li>Healthy breakfast (protein + fiber).</li>
+      <li>Set 3 priorities for the day.</li>
+      <li>10 min mindfulness/meditation.</li>
+      <li>Light exposure: open curtains / step outside.</li>
+      <li>Skincare: cleanse, tone, moisturize, SPF.</li>
+      <li>Positive affirmation before starting work.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4 style="color:#e91e63;margin:0 0 8px">Yoga Practice (Beginner Friendly)</h4>
+    <ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px">
+      <li><b>Mountain (Tadasana):</b> posture & grounding.</li>
+      <li><b>Downward Dog:</b> stretches whole body.</li>
+      <li><b>Child's Pose:</b> relaxes back & hips.</li>
+      <li><b>Cat-Cow:</b> spine mobility.</li>
+      <li><b>Warrior I & II:</b> strength & balance.</li>
+      <li><b>Tree Pose:</b> focus & stability.</li>
+      <li><b>Bridge Pose:</b> strengthens glutes/back.</li>
+      <li><b>Seated Forward Bend:</b> calms mind.</li>
+      <li><b>Corpse (Savasana):</b> final relaxation.</li>
+    </ul>
+    <p style="font-size:12px;margin-top:8px">Practice 15-30 min daily; breathe deeply; don't force. Consult instructor if pregnant/injured.</p>
+  </div>
+
+  <div class="tip">Informational only; consult professionals for medical/fitness advice.</div>
+</div>
+
 <div class="footer">
-  <svg width="32" height="32" viewBox="0 0 48 48" style="margin-bottom:4px"><circle cx="24" cy="24" r="22" fill="#fff" opacity=".2"/><text x="24" y="32" font-size="26" text-anchor="middle" fill="#fff" font-weight="bold">W</text></svg><br>
   Women & Girls Lifestyle Hub<br>
   Developed by <b>Dr. Sumaiya Mohammad</b>, Bangladesh<br>
   Made with love for girls & women<br>
