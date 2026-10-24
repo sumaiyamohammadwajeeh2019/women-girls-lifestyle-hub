@@ -147,6 +147,28 @@ input,select{width:100%;padding:11px;margin:6px 0;border:1px solid #ddd;border-r
     <button class="btn btn-cloth" onclick="clothBudget()">Plan Wardrobe</button>
     <div id="c_bud" class="result"></div>
   </div>
+
+  <div class="card">
+    <h4 style="color:#9c27b0;margin:0 0 8px">Complementary Colors for Dresses</h4>
+    <label>Choose a Dress Color</label>
+    <select id="comp_color">
+      <option value="red">Red</option><option value="blue">Blue</option>
+      <option value="green">Green</option><option value="pink">Pink</option>
+      <option value="black">Black</option><option value="white">White</option>
+      <option value="yellow">Yellow</option><option value="purple">Purple</option>
+      <option value="orange">Orange</option><option value="teal">Teal</option>
+    </select>
+    <button class="btn btn-cloth" onclick="compColor()">Find Complement</button>
+    <div id="comp_res" class="result"></div>
+    <ul style="margin:8px 0 0;padding-left:18px;line-height:1.7;font-size:12px">
+      <li>Red ↔ Green</li>
+      <li>Blue ↔ Orange</li>
+      <li>Yellow ↔ Purple</li>
+      <li>Pink ↔ Green/Teal</li>
+      <li>Black ↔ White/Gold</li>
+      <li>Teal ↔ Coral/Pink</li>
+    </ul>
+  </div>
 </div>
 
 <!-- HEALTH -->
@@ -424,6 +446,8 @@ function colorMatch(){
   const c=document.getElementById('c_color').value;
   document.getElementById('c_match').innerHTML=c.charAt(0).toUpperCase()+c.slice(1)+' pairs well with: '+colorMap[c].join(', ')+'.';
 }
+const compMap={red:'Green (try a green dupatta/shoes/bag)',blue:'Orange/Coral (warm accessories)',green:'Red/Maroon (bold contrast)',pink:'Teal/Mint or Green',black:'White/Gold/Silver (classic)',white:'Any bold color (red, blue, black)',yellow:'Purple/Lavender',purple:'Yellow/Gold',orange:'Blue/Navy',teal:'Coral/Pink/Orange'};
+function compColor(){const c=document.getElementById('comp_color').value;document.getElementById('comp_res').innerHTML='<b>'+c.charAt(0).toUpperCase()+c.slice(1)+'</b> dress pairs best with: '+compMap[c]+'.';}
 function clothBudget(){
   const b=+document.getElementById('c_budget').value||0;
   if(b<=0){document.getElementById('c_bud').innerHTML='Enter budget';return;}
