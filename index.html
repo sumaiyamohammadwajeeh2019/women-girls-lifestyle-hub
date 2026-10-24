@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Women & Girls Lifestyle Hub - Makeup | Clothing | Health</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;max-width:480px;margin:0 auto;background:#fce4ec;padding:0}
+.header{background:linear-gradient(135deg,#e91e63,#9c27b0);color:white;padding:18px;text-align:center}
+.header h2{margin:0;font-size:20px}
+.header div{font-size:11px;color:#fce4ec;margin-top:4px}
+.tabs{display:flex;background:white;position:sticky;top:0;z-index:10;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.tab{flex:1;padding:12px;text-align:center;cursor:pointer;border-bottom:3px solid #eee;font-weight:bold;font-size:12px;color:#555}
+.tab.active{border-color:#e91e63;color:#e91e63;background:#fce4ec}
+.panel{display:none;padding:15px;background:white;margin:10px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.panel.active{display:block}
+h3{color:#9c27b0;margin:8px 0 12px}
+label{display:block;font-size:13px;color:#444;margin-top:8px;font-weight:600}
+input,select{width:100%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8px;font-size:14px}
+.btn{width:100%;padding:12px;border:0;border-radius:10px;font-size:15px;font-weight:bold;cursor:pointer;margin-top:10px;color:white}
+.btn-makeup{background:linear-gradient(90deg,#e91e63,#f06292)}
+.btn-cloth{background:linear-gradient(90deg,#9c27b0,#ba68c8)}
+.btn-health{background:linear-gradient(90deg,#00897b,#4db6ac)}
+.result{background:#f3e5f5;padding:12px;border-radius:8px;margin-top:10px;line-height:1.7;border:1px dashed #ce93d8;font-size:14px}
+.tip{background:#fff8e1;border-left:4px solid #ffc107;padding:10px;margin:8px 0;border-radius:6px;font-size:13px}
+.card{background:#fafafa;border:1px solid #eee;border-radius:10px;padding:12px;margin:8px 0}
+.footer{background:#4a148c;color:#f3e5f5;text-align:center;padding:14px;font-size:12px;margin-top:15px}
+.row{display:flex;gap:8px}.row>*{flex:1}
+.chip{display:inline-block;background:#f8bbd0;color:#880e4f;padding:4px 10px;border-radius:20px;font-size:12px;margin:3px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h2>Women & Girls Lifestyle Hub</h2>
+  <div>Makeup | Clothing | Health - for girls & women</div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab(event,'makeup')">MAKEUP</div>
+  <div class="tab" onclick="showTab(event,'cloth')">CLOTHING</div>
+  <div class="tab" onclick="showTab(event,'health')">HEALTH</div>
+</div>
+
+<div id="makeup" class="panel active">
+  <h3>Makeup Studio</h3>
+
+  <div class="card">
+    <label>Skin Tone</label>
+    <select id="m_tone">
+      <option value="fair">Fair</option>
+      <option value="light">Light</option>
+      <option value="medium">Medium</option>
+      <option value="tan">Tan</option>
+      <option value="deep">Deep</option>
+    </select>
+    <label>Skin Type</label>
+    <select id="m_type">
+      <option value="oily">Oily</option>
+      <option value="dry">Dry</option>
+      <option value="combo">Combination</option>
+      <option value="normal">Normal</option>
+    </select>
+    <button class="btn btn-makeup" onclick="makeupShade()">Find My Shade</button>
+    <div id="m_res" class="result"></div>
+  </div>
+
+  <div class="card">
+    <label>Occasion</label>
+    <select id="m_occ">
+      <option value="daily">Daily / Office</option>
+      <option value="party">Party / Event</option>
+      <option value="bridal">Bridal</option>
+      <option value="festive">Festive</option>
+    </select>
+    <button class="btn btn-makeup" onclick="lipstickRec()">Lipstick Recommendation</button>
+    <div id="m_lip" class="result"></div>
+  </div>
+
+  <div class="card">
+    <label>Makeup Budget</label>
+    <input type="number" id="m_budget" placeholder="5000">
+    <button class="btn btn-makeup" onclick="makeupBudget()">Plan Budget</button>
+    <div id="m_bud" class="result"></div>
+  </div>
+
+  <div class="tip">Always remove makeup before sleep and use SPF daily.</div>
+</div>
+<!-- CLOTHING -->
+<div id="cloth" class="panel">
+  <h3>Clothing & Style</h3>
+
+  <div class="card">
+    <label>Bust (inches)</label><input type="number" id="c_bust" placeholder="34">
+    <label>Waist (inches)</label><input type="number" id="c_waist" placeholder="28">
+    <label>Hip (inches)</label><input type="number" id="c_hip" placeholder="36">
+    <button class="btn btn-cloth" onclick="sizeCalc()">Find My Size</button>
+    <div id="c_size" class="result"></div>
+  </div>
+
+  <div class="card">
+    <label>Body Type</label>
+    <select id="c_body">
+      <option value="pear">Pear (hips wider)</option>
+      <option value="apple">Apple (midsection wider)</option>
+      <option value="hourglass">Hourglass (balanced)</option>
+      <option value="rectangle">Rectangle (straight)</option>
+      <option value="inverted">Inverted Triangle</option>
+    </select>
+    <button class="btn btn-cloth" onclick="bodyTips()">Styling Tips</button>
+    <div id="c_tips" class="result"></div>
+  </div>
+
+  <div class="card">
+    <label>Base Color</label>
+    <select id="c_color">
+      <option value="red">Red</option><option value="blue">Blue</option>
+      <option value="green">Green</option><option value="pink">Pink</option>
+      <option value="black">Black</option><option value="white">White</option>
+      <option value="yellow">Yellow</option><option value="purple">Purple</option>
+    </select>
+    <button class="btn btn-cloth" onclick="colorMatch()">Color Match</button>
+    <div id="c_match" class="result"></div>
+  </div>
+
+  <div class="card">
+    <label>Clothing Budget</label><input type="number" id="c_budget" placeholder="10000">
+    <button class="btn btn-cloth" onclick="clothBudget()">Plan Wardrobe</button>
+    <div id="c_bud" class="result"></div>
+  </div>
+</div>
+
+<!-- HEALTH -->
+<div id="health" class="panel">
+  <h3>Women's Health</h3>
+
+  <div class="card">
+    <label>Last Period Start Date</label><input type="date" id="h_lmp">
+    <label>Average Cycle Length (days)</label><input type="number" id="h_cycle" value="28">
+    <button class="btn btn-health" onclick="periodCalc()">Calculate</button>
+    <div id="h_period" class="result"></div>
+  </div>
+
+  <div class="card">
+    <label>LMP (pregnancy due date)</label><input type="date" id="h_preg">
+    <button class="btn btn-health" onclick="pregCalc()">Due Date</button>
+    <div id="h_pregres" class="result"></div>
+  </div>
+
+  <div class="card">
+    <label>Height (cm)</label><input type="number" id="h_h" placeholder="160">
+    <label>Weight (kg)</label><input type="number" id="h_w" placeholder="55">
+    <label>Age</label><input type="number" id="h_age" placeholder="25">
+    <button class="btn btn-health" onclick="bmiCalc()">BMI & Ideal Weight</button>
+    <div id="h_bmi" class="result"></div>
+  </div>
+
+  <div class="card">
+    <label>Daily Water</label>
+    <button class="btn btn-health" onclick="waterCalc()">Water Intake</button>
+    <div id="h_water" class="result"></div>
+  </div>
+
+  <div class="tip">Consult a doctor for medical advice. Informational only.</div>
+</div>
+
+<div class="footer">
+  Women & Girls Lifestyle Hub<br>
+  Made with love for girls & women<br>
+  2026
+</div>
+
+<script>
+function showTab(e,id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');e.target.classList.add('active');}
+
+function makeupShade(){
+  const tone=document.getElementById('m_tone').value;
+  const type=document.getElementById('m_type').value;
+  const shades={fair:'Ivory / Porcelain',light:'Light Beige',medium:'Natural Beige',tan:'Warm Honey',deep:'Espresso / Deep'};
+  const primer={oily:'Mattifying primer, oil-free foundation',dry:'Hydrating primer, dewy foundation',combo:'Balancing primer, satin finish',normal:'Any primer, natural finish'};
+  document.getElementById('m_res').innerHTML='Foundation Shade: '+shades[tone]+'<br>Primer/Foundation: '+primer[type]+'<br>Blush: '+(tone==='fair'||tone==='light'?'Soft pink/peach':'Coral/bronze')+'<br>Highlighter: '+(tone==='deep'?'Gold/copper':'Champagne/pearl');
+}
+function lipstickRec(){
+  const occ=document.getElementById('m_occ').value;
+  const rec={daily:'Nude pink, dusty rose, mauve',party:'Bold red, berry, fuchsia',bridal:'Classic red or soft pink with gloss',festive:'Deep berry, terracotta, gold shimmer'};
+  document.getElementById('m_lip').innerHTML='Recommended: '+rec[occ]+'<br><span class="chip">Lip liner</span><span class="chip">Gloss</span><span class="chip">Balm</span>';
+}
+function makeupBudget(){
+  const b=+document.getElementById('m_budget').value||0;
+  if(b<=0){document.getElementById('m_bud').innerHTML='Enter budget';return;}
+  const items=[['Foundation',0.25],['Lipstick (x2)',0.15],['Mascara',0.10],['Blush',0.10],['Eyeshadow',0.15],['Tools/Brushes',0.15],['Skincare base',0.10]];
+  let html='Budget Plan '+b.toLocaleString()+'<br>';
+  items.forEach(([n,p])=>{html+=n+': '+Math.round(b*p).toLocaleString()+'<br>';});
+  document.getElementById('m_bud').innerHTML=html;
+}
+
+function sizeCalc(){
+  const bust=+document.getElementById('c_bust').value,waist=+document.getElementById('c_waist').value,hip=+document.getElementById('c_hip').value;
+  if(!bust||!waist||!hip){document.getElementById('c_size').innerHTML='Enter measurements';return;}
+  let size;
+  if(bust<=32 && waist<=26 && hip<=34) size='XS';
+  else if(bust<=34 && waist<=28 && hip<=36) size='S';
+  else if(bust<=36 && waist<=30 && hip<=38) size='M';
+  else if(bust<=38 && waist<=32 && hip<=40) size='L';
+  else if(bust<=40 && waist<=34 && hip<=42) size='XL';
+  else size='XXL+';
+  document.getElementById('c_size').innerHTML='Your Size: '+size+'<br>Bust '+bust+'" Waist '+waist+'" Hip '+hip+'"';
+}
+function bodyTips(){
+  const t=document.getElementById('c_body').value;
+  const tips={pear:'A-line skirts, wide-leg pants, boat-neck tops.',apple:'Empire waist, V-necks, flowy tunics.',hourglass:'Wrap dresses, fitted waists, belted outfits.',rectangle:'Peplum tops, ruffles, layered looks.',inverted:'Wide-leg pants, full skirts; balance broad shoulders.'};
+  document.getElementById('c_tips').innerHTML='Tips: '+tips[t];
+}
+const colorMap={red:['black','white','gold','navy'],blue:['white','grey','yellow','orange'],green:['beige','brown','gold','white'],pink:['grey','white','navy','mint'],black:['red','white','gold','any bright'],white:['any color','pastels','bold brights'],yellow:['navy','grey','white','purple'],purple:['grey','gold','pink','white']};
+function colorMatch(){
+  const c=document.getElementById('c_color').value;
+  document.getElementById('c_match').innerHTML=c.charAt(0).toUpperCase()+c.slice(1)+' pairs well with: '+colorMap[c].join(', ')+'.';
+}
+function clothBudget(){
+  const b=+document.getElementById('c_budget').value||0;
+  if(b<=0){document.getElementById('c_bud').innerHTML='Enter budget';return;}
+  const items=[['Dresses/Kurtis',0.30],['Tops/T-shirts',0.20],['Bottoms',0.15],['Shoes',0.15],['Accessories',0.10],['Undergarments',0.10]];
+  let html='Wardrobe Plan '+b.toLocaleString()+'<br>';
+  items.forEach(([n,p])=>{html+=n+': '+Math.round(b*p).toLocaleString()+'<br>';});
+  document.getElementById('c_bud').innerHTML=html;
+}
+
+function periodCalc(){
+  const lmp=document.getElementById('h_lmp').value; const cycle=+document.getElementById('h_cycle').value||28;
+  if(!lmp){document.getElementById('h_period').innerHTML='Select date';return;}
+  const d=new Date(lmp); const next=new Date(d); next.setDate(d.getDate()+cycle);
+  const ovu=new Date(d); ovu.setDate(d.getDate()+Math.round(cycle/2));
+  const fertS=new Date(ovu); fertS.setDate(ovu.getDate()-5);
+  const fertE=new Date(ovu); fertE.setDate(ovu.getDate()+1);
+  const fmt=x=>x.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+  document.getElementById('h_period').innerHTML='Next Period: '+fmt(next)+'<br>Ovulation: '+fmt(ovu)+'<br>Fertile Window: '+fmt(fertS)+' - '+fmt(fertE);
+}
+function pregCalc(){
+  const lmp=document.getElementById('h_preg').value;
+  if(!lmp){document.getElementById('h_pregres').innerHTML='Select LMP';return;}
+  const d=new Date(lmp); const due=new Date(d); due.setDate(d.getDate()+280);
+  const fmt=x=>x.toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});
+  document.getElementById('h_pregres').innerHTML='Estimated Due Date: '+fmt(due)+'<br><small>(Naegele rule, +/-2 weeks)</small>';
+}
+function bmiCalc(){
+  const h=+document.getElementById('h_h').value,w=+document.getElementById('h_w').value;
+  if(!h||!w){document.getElementById('h_bmi').innerHTML='Enter height & weight';return;}
+  const bmi=w/((h/100)**2);
+  let cat;
+  if(bmi<18.5)cat='Underweight';
+  else if(bmi<25)cat='Normal';
+  else if(bmi<30)cat='Overweight';
+  else cat='Obese';
+  const idealLow=18.5*(h/100)**2, idealHigh=24.9*(h/100)**2;
+  document.getElementById('h_bmi').innerHTML='BMI: '+bmi.toFixed(1)+' - '+cat+'<br>Ideal Weight Range: '+idealLow.toFixed(1)+'-'+idealHigh.toFixed(1)+' kg';
+}
+function waterCalc(){
+  const w=+document.getElementById('h_w').value||60;
+  const glasses=Math.round((w*0.033)/0.25);
+  document.getElementById('h_water').innerHTML='Daily Water: ~'+(w*0.033).toFixed(2)+' L = '+glasses+' glasses (250ml)';
+}
+</script>
+</body>
+</html>
+
