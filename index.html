@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Women & Girls Lifestyle Hub - Makeup | Clothing | Health</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23e91e63'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-weight='bold'%3EW%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#e91e63">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;max-width:480px;margin:0 auto;background:#fce4ec;padding:0}
+.header{background:linear-gradient(135deg,#e91e63,#9c27b0);color:white;padding:18px;text-align:center;position:relative}
+.header h2{margin:0;font-size:20px}
+.header div{font-size:11px;color:#fce4ec;margin-top:4px}
+.lang-btn{position:absolute;top:12px;right:12px;background:white;color:#e91e63;border:0;padding:7px 12px;border-radius:20px;font-weight:bold;font-size:12px;cursor:pointer}
+.tabs{display:flex;background:white;position:sticky;top:0;z-index:10;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.tab{flex:1;padding:12px 2px;text-align:center;cursor:pointer;border-bottom:3px solid #eee;font-weight:bold;font-size:11px;color:#555}
+.tab.active{border-color:#e91e63;color:#e91e63;background:#fce4ec}
+.panel{display:none;padding:15px;background:white;margin:10px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.panel.active{display:block}
+h3{color:#9c27b0;margin:8px 0 12px}
+label{display:block;font-size:13px;color:#444;margin-top:8px;font-weight:600}
+input,select{width:100%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8px;font-size:14px}
+.btn{width:100%;padding:12px;border:0;border-radius:10px;font-size:15px;font-weight:bold;cursor:pointer;margin-top:10px;color:white}
+.btn-makeup{background:linear-gradient(90deg,#e91e63,#f06292)}
+.btn-cloth{background:linear-gradient(90deg,#9c27b0,#ba68c8)}
+.btn-health{background:linear-gradient(90deg,#00897b,#4db6ac)}
+.btn-calorie{background:linear-gradient(90deg,#ff6f00,#ffab00)}
+.result{background:#f3e5f5;padding:12px;border-radius:8px;margin-top:10px;line-height:1.7;border:1px dashed #ce93d8;font-size:14px}
+.tip{background:#fff8e1;border-left:4px solid #ffc107;padding:10px;margin:8px 0;border-radius:6px;font-size:13px}
+.card{background:#fafafa;border:1px solid #eee;border-radius:10px;padding:12px;margin:8px 0}
+.footer{background:#4a148c;color:#f3e5f5;text-align:center;padding:14px;font-size:12px;margin-top:15px}
+.row{display:flex;gap:8px}.row>*{flex:1}
+.chip{display:inline-block;background:#f8bbd0;color:#880e4f;padding:4px 10px;border-radius:20px;font-size:12px;margin:3px}
+</style>
+</head>
+<body>
+<div class="header">
+  <button class="lang-btn" id="langBtn" onclick="toggleLang()">বাংলা</button>
+  <svg width="48" height="48" viewBox="0 0 48 48" style="margin-bottom:6px"><circle cx="24" cy="24" r="22" fill="#fff" opacity=".2"/><text x="24" y="32" font-size="26" text-anchor="middle" fill="#fff" font-weight="bold">W</text></svg>
+  <h2 data-en="Women & Girls Lifestyle Hub" data-bn="মহিলা ও মেয়েদের লাইফস্টাইল হাব">Women & Girls Lifestyle Hub</h2>
+  <div data-en="Makeup | Clothing | Health - for girls & women" data-bn="মেকআপ | পোশাক | স্বাস্থ্য - মেয়েদের জন্য">Makeup | Clothing | Health - for girls & women</div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab(event,'makeup')" data-en="MAKEUP" data-bn="মেকআপ">MAKEUP</div>
+  <div class="tab" onclick="showTab(event,'cloth')" data-en="CLOTHING" data-bn="পোশাক">CLOTHING</div>
+  <div class="tab" onclick="showTab(event,'health')" data-en="HEALTH" data-bn="স্বাস্থ্য">HEALTH</div>
+  <div class="tab" onclick="showTab(event,'wellness')" data-en="WELLNESS" data-bn="সুস্থতা">WELLNESS</div>
+  <div class="tab" onclick="showTab(event,'calorie')" data-en="CALORIE" data-bn="ক্যালরি">CALORIE</div>
+</div>
+
+<div id="makeup" class="panel active">
+  <h3 data-en="Makeup Studio" data-bn="মেকআপ স্টুডিও">Makeup Studio</h3>
+  <div class="card">
+    <label data-en="Skin Tone" data-bn="ত্বকের রঙ">Skin Tone</label>
+    <select id="m_tone"><option value="fair" data-en="Fair" data-bn="ফর্সা">Fair</option><option value="light" data-en="Light" data-bn="হালকা">Light</option><option value="medium" data-en="Medium" data-bn="মাঝারি">Medium</option><option value="tan" data-en="Tan" data-bn="শ্যামলা">Tan</option><option value="deep" data-en="Deep" data-bn="গাঢ়">Deep</option></select>
+    <label data-en="Skin Type" data-bn="ত্বকের ধরন">Skin Type</label>
+    <select id="m_type"><option value="oily" data-en="Oily" data-bn="তৈলাক্ত">Oily</option><option value="dry" data-en="Dry" data-bn="শুষ্ক">Dry</option><option value="combo" data-en="Combination" data-bn="মিশ্র">Combination</option><option value="normal" data-en="Normal" data-bn="স্বাভাবিক">Normal</option></select>
+    <button class="btn btn-makeup" onclick="makeupShade()" data-en="Find My Shade" data-bn="আমার শেড খুঁজুন">Find My Shade</button>
+    <div id="m_res" class="result"></div>
+  </div>
+  <div class="card">
+    <label data-en="Occasion" data-bn="উপলক্ষ">Occasion</label>
+    <select id="m_occ"><option value="daily" data-en="Daily / Office" data-bn="প্রতিদিন / অফিস">Daily / Office</option><option value="party" data-en="Party / Event" data-bn="পার্টি / অনুষ্ঠান">Party / Event</option><option value="bridal" data-en="Bridal" data-bn="ব্রাইডাল">Bridal</option><option value="festive" data-en="Festive" data-bn="উৎসব">Festive</option></select>
+    <button class="btn btn-makeup" onclick="lipstickRec()" data-en="Lipstick Recommendation" data-bn="লিপস্টিক সাজেশন">Lipstick Recommendation</button>
+    <div id="m_lip" class="result"></div>
+  </div>
+  <div class="card">
+    <label data-en="Makeup Budget" data-bn="মেকআপ বাজেট">Makeup Budget</label>
+    <input type="number" id="m_budget" placeholder="5000">
+    <button class="btn btn-makeup" onclick="makeupBudget()" data-en="Plan Budget" data-bn="বাজেট প্ল্যান">Plan Budget</button>
+    <div id="m_bud" class="result"></div>
+  </div>
+  <div class="card">
+    <h4 style="color:#e91e63;margin:0 0 8px" data-en="Original Look Daily Makeup Tips" data-bn="ন্যাচারাল লুক প্রতিদিনের মেকআপ টিপস">Original Look Daily Makeup Tips</h4>
+    <ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px">
+      <li data-en="Start with clean, moisturized skin + SPF." data-bn="পরিষ্কার, ময়েশ্চারাইজড ত্বক + SPF দিয়ে শুরু করুন।">Start with clean, moisturized skin + SPF.</li>
+      <li data-en="Use light BB/CC cream or tinted moisturizer; spot-conceal only." data-bn="হালকা BB/CC ক্রিম বা টিন্টেড ময়েশ্চারাইজার ব্যবহার করুন।">Use light BB/CC cream or tinted moisturizer; spot-conceal only.</li>
+      <li data-en="Soft brows: fill sparse areas with pencil/powder, brush up." data-bn="নরম ভ্রু: পেন্সিল দিয়ে হালকা করে ভরাট করুন।">Soft brows: fill sparse areas with pencil/powder, brush up.</li>
+      <li data-en="Neutral eyeshadow (beige/taupe) + thin brown liner." data-bn="ন্যাচারাল আইশ্যাডো + পাতলা ব্রাউন লাইনার।">Neutral eyeshadow (beige/taupe) + thin brown liner.</li>
+      <li data-en="One coat of mascara; curl lashes first." data-bn="এক কোট মাসকারা; আগে ল্যাশ কার্ল করুন।">One coat of mascara; curl lashes first.</li>
+      <li data-en="Cream blush on cheeks for natural flush; blend upward." data-bn="গালে ক্রিম ব্লাশ দিয়ে ন্যাচারাল গ্লো আনুন।">Cream blush on cheeks for natural flush; blend upward.</li>
+      <li data-en="Highlighter only on high points." data-bn="হাইলাইটার শুধু উঁচু জায়গায় দিন।">Highlighter only on high points.</li>
+      <li data-en="Lip tint or nude lipstick; dab with finger for soft finish." data-bn="লিপ টিন্ট বা ন্যুড লিপস্টিক আঙুল দিয়ে ব্লেন্ড করুন।">Lip tint or nude lipstick; dab with finger for soft finish.</li>
+      <li data-en="Set with light translucent powder only on T-zone." data-bn="শুধু T-zone এ হালকা পাউডার দিন।">Set with light translucent powder only on T-zone.</li>
+      <li data-en="Keep it fresh: blot oil, reapply lip tint through the day." data-bn="সতেজ রাখুন: তেল মুছুন, লিপ টিন্ট আবার লাগান।">Keep it fresh: blot oil, reapply lip tint through the day.</li>
+    </ul>
+    <p style="font-size:12px;margin-top:8px" data-en="Less is more — enhance, don't mask. Remove fully before bed." data-bn="কমই বেশি — ঢাকবেন না, সাজাবেন। ঘুমের আগে পুরো তুলে ফেলুন।">Less is more — enhance, don't mask. Remove fully before bed.</p>
+  </div>
+  <div class="tip" data-en="Always remove makeup before sleep and use SPF daily." data-bn="ঘুমের আগে সবসময় মেকআপ তুলুন এবং প্রতিদিন SPF ব্যবহার করুন।">Always remove makeup before sleep and use SPF daily.</div>
+</div>
+
+<div id="cloth" class="panel">
+  <h3 data-en="Clothing & Style" data-bn="পোশাক ও স্টাইল">Clothing & Style</h3>
+  <div class="card">
+    <label data-en="Bust (inches)" data-bn="বাস্ট (ইঞ্চি)">Bust (inches)</label><input type="number" id="c_bust" placeholder="34">
+    <label data-en="Waist (inches)" data-bn="কোমর (ইঞ্চি)">Waist (inches)</label><input type="number" id="c_waist" placeholder="28">
+    <label data-en="Hip (inches)" data-bn="হিপ (ইঞ্চি)">Hip (inches)</label><input type="number" id="c_hip" placeholder="36">
+    <button class="btn btn-cloth" onclick="sizeCalc()" data-en="Find My Size" data-bn="আমার সাইজ খুঁজুন">Find My Size</button>
+    <div id="c_size" class="result"></div>
+  </div>
+  <div class="card">
+    <label data-en="Body Type" data-bn="শরীরের ধরন">Body Type</label>
+    <select id="c_body"><option value="pear" data-en="Pear (hips wider)" data-bn="পিয়ার (হিপ চওড়া)">Pear (hips wider)</option><option value="apple" data-en="Apple (midsection wider)" data-bn="অ্যাপল (মাঝখান চওড়া)">Apple (midsection wider)</option><option value="hourglass" data-en="Hourglass (balanced)" data-bn="আওয়ারগ্লাস (ভারসাম্য)">Hourglass (balanced)</option><option value="rectangle" data-en="Rectangle (straight)" data-bn="রেক্ট্যাঙ্গেল (সোজা)">Rectangle (straight)</option><option value="inverted" data-en="Inverted Triangle" data-bn="উল্টো ট্রায়াঙ্গেল">Inverted Triangle</option></select>
+    <button class="btn btn-cloth" onclick="bodyTips()" data-en="Styling Tips" data-bn="স্টাইলিং টিপস">Styling Tips</button>
+    <div id="c_tips" class="result"></div>
+  </div>
+  <div class="card">
+    <label data-en="Base Color" data-bn="মূল রঙ">Base Color</label>
+    <select id="c_color"><option value="red" data-en="Red" data-bn="লাল">Red</option><option value="blue" data-en="Blue" data-bn="নীল">Blue</option><option value="green" data-en="Green" data-bn="সবুজ">Green</option><option value="pink" data-en="Pink" data-bn="গোলাপি">Pink</option><option value="black" data-en="Black" data-bn="কালো">Black</option><option value="white" data-en="White" data-bn="সাদা">White</option><option value="yellow" data-en="Yellow" data-bn="হলুদ">Yellow</option><option value="purple" data-en="Purple" data-bn="বেগুনি">Purple</option></select>
+    <button class="btn btn-cloth" onclick="colorMatch()" data-en="Color Match" data-bn="রঙ মিলান">Color Match</button>
+    <div id="c_match" class="result"></div>
+  </div>
+  <div class="card">
+    <label data-en="Clothing Budget" data-bn="পোশাক বাজেট">Clothing Budget</label><input type="number" id="c_budget" placeholder="10000">
+    <button class="btn btn-cloth" onclick="clothBudget()" data-en="Plan Wardrobe" data-bn="ওয়ার্ডরোব প্ল্যান">Plan Wardrobe</button>
+    <div id="c_bud" class="result"></div>
+  </div>
+  <div class="card">
+    <h4 style="color:#9c27b0;margin:0 0 8px" data-en="Complementary Colors for Dresses" data-bn="ড্রেসের জন্য মানানসই রঙ">Complementary Colors for Dresses</h4>
+    <label data-en="Choose a Dress Color" data-bn="একটি ড্রেসের রঙ বেছে নিন">Choose a Dress Color</label>
+    <select id="comp_color"><option value="red" data-en="Red" data-bn="লাল">Red</option><option value="blue" data-en="Blue" data-bn="নীল">Blue</option><option value="green" data-en="Green" data-bn="সবুজ">Green</option><option value="pink" data-en="Pink" data-bn="গোলাপি">Pink</option><option value="black" data-en="Black" data-bn="কালো">Black</option><option value="white" data-en="White" data-bn="সাদা">White</option><option value="yellow" data-en="Yellow" data-bn="হলুদ">Yellow</option><option value="purple" data-en="Purple" data-bn="বেগুনি">Purple</option><option value="orange" data-en="Orange" data-bn="কমলা">Orange</option><option value="teal" data-en="Teal" data-bn="টিল">Teal</option></select>
+    <button class="btn btn-cloth" onclick="compColor()" data-en="Find Complement" data-bn="মানানসই রঙ খুঁজুন">Find Complement</button>
+    <div id="comp_res" class="result"></div>
+  </div>
+</div>
+
+<div id="health" class="panel">
+  <h3 data-en="Women's Health" data-bn="মহিলাদের স্বাস্থ্য">Women's Health</h3>
+  <div class="card">
+    <label data-en="Last Period Start Date" data-bn="শেষ পিরিয়ড শুরুর তারিখ">Last Period Start Date</label><input type="date" id="h_lmp">
+    <label data-en="Average Cycle Length (days)" data-bn="গড় সাইকেল দৈর্ঘ্য (দিন)">Average Cycle Length (days)</label><input type="number" id="h_cycle" value="28">
+    <button class="btn btn-health" onclick="periodCalc()" data-en="Calculate" data-bn="হিসাব করুন">Calculate</button>
+    <div id="h_period" class="result"></div>
+  </div>
+  <div class="card">
+    <label data-en="LMP (pregnancy due date)" data-bn="LMP (গর্ভাবস্থার সম্ভাব্য তারিখ)">LMP (pregnancy due date)</label><input type="date" id="h_preg">
+    <button class="btn btn-health" onclick="pregCalc()" data-en="Due Date" data-bn="সম্ভাব্য তারিখ">Due Date</button>
+    <div id="h_pregres" class="result"></div>
+  </div>
+  <div class="card">
+    <label data-en="Height (cm)" data-bn="উচ্চতা (সেমি)">Height (cm)</label><input type="number" id="h_h" placeholder="160">
+    <label data-en="Weight (kg)" data-bn="ওজন (কেজি)">Weight (kg)</label><input type="number" id="h_w" placeholder="55">
+    <label data-en="Age" data-bn="বয়স">Age</label><input type="number" id="h_age" placeholder="25">
+    <button class="btn btn-health" onclick="bmiCalc()" data-en="BMI & Ideal Weight" data-bn="BMI ও আদর্শ ওজন">BMI & Ideal Weight</button>
+    <div id="h_bmi" class="result"></div>
+  </div>
+  <div class="card">
+    <label data-en="Daily Water" data-bn="দৈনিক পানি">Daily Water</label>
+    <button class="btn btn-health" onclick="waterCalc()" data-en="Water Intake" data-bn="পানির পরিমাণ">Water Intake</button>
+    <div id="h_water" class="result"></div>
+  </div>
+  <div class="tip" data-en="Consult a doctor for medical advice. Informational only." data-bn="চিকিৎসা পরামর্শের জন্য ডাক্তারের সাথে কথা বলুন। শুধু তথ্যের জন্য।">Consult a doctor for medical advice. Informational only.</div>
+</div>
+
+<div id="wellness" class="panel">
+  <h3 data-en="Wellness & Self-Care" data-bn="সুস্থতা ও নিজের যত্ন">Wellness & Self-Care</h3>
+  <div class="card"><h4 style="color:#e91e63;margin:0 0 8px" data-en="Dress Code for Different Jobs" data-bn="বিভিন্ন চাকরির ড্রেস কোড">Dress Code for Different Jobs</h4><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li><b>Corporate/Office:</b> Blazer, formal shirt/blouse, tailored pants or pencil skirt, closed shoes, minimal jewelry.</li><li><b>Teaching:</b> Modest kurti/saree or formal top with pants, comfortable flats, light makeup.</li><li><b>Healthcare:</b> Scrubs/uniform, hair tied up, no dangling jewelry, closed-toe shoes.</li><li><b>Retail/Sales:</b> Smart casual, brand colors, name tag, neat grooming, comfortable shoes.</li><li><b>IT/Tech:</b> Casual (jeans, t-shirt/hoodie) but neat; sneakers allowed.</li><li><b>Creative/Media:</b> Expressive, trendy, statement pieces; smart-casual balance.</li><li><b>Field/Outdoor:</b> Durable fabrics, sun protection, closed shoes, hat/cap.</li><li><b>Remote/Home:</b> Comfortable yet camera-ready top.</li></ul></div>
+  <div class="card"><h4 style="color:#e91e63;margin:0 0 8px" data-en="Mood Elevation Tips" data-bn="মন ভালো করার টিপস">Mood Elevation Tips</h4><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li>Start day with 5 min gratitude journaling.</li><li>Listen to upbeat music or a favorite podcast.</li><li>Get 10-15 min sunlight and fresh air.</li><li>Connect with a friend or loved one.</li><li>Do one small task to build momentum.</li><li>Limit doom-scrolling; set phone breaks.</li><li>Reward yourself with a small treat after tasks.</li><li>Practice deep breathing (4-7-8) when stressed.</li><li>Wear colors you love; dress up a little.</li><li>End day with a relaxing hobby (reading, art).</li></ul></div>
+  <div class="card"><h4 style="color:#e91e63;margin:0 0 8px" data-en="Menstrual Pain & Migraine Relief" data-bn="পিরিয়ড ব্যথা ও মাইগ্রেন উপশম">Menstrual Pain & Migraine Relief</h4><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li>Apply heat pad/hot water bottle on lower abdomen.</li><li>Gentle yoga: child's pose, cat-cow, reclined twist.</li><li>Drink warm water, ginger/peppermint tea.</li><li>Light exercise/walk releases endorphins.</li><li>Magnesium-rich foods (dark chocolate, nuts, spinach).</li><li>Over-the-counter pain relief as advised by doctor.</li><li>Avoid excess caffeine/salty foods; stay hydrated.</li></ul><p style="font-size:13px;font-weight:600;margin:8px 0 4px">Migraine:</p><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li>Rest in a dark, quiet room; cold compress on forehead.</li><li>Hydrate; avoid triggers.</li><li>Gentle neck/shoulder stretches.</li><li>Track triggers in a diary.</li></ul></div>
+  <div class="card"><h4 style="color:#e91e63;margin:0 0 8px" data-en="Daily Morning Self-Care" data-bn="প্রতিদিন সকালের নিজের যত্ন">Daily Morning Self-Care</h4><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li>Wake at a consistent time; avoid snoozing.</li><li>Drink a glass of water first thing.</li><li>5-10 min stretching or yoga.</li><li>Wash face; moisturize; apply SPF.</li><li>Healthy breakfast (protein + fiber).</li><li>Set 3 priorities for the day.</li><li>10 min mindfulness/meditation.</li><li>Light exposure: open curtains / step outside.</li><li>Skincare: cleanse, tone, moisturize, SPF.</li><li>Positive affirmation before starting work.</li></ul></div>
+  <div class="card"><h4 style="color:#e91e63;margin:0 0 8px" data-en="Yoga Practice (Beginner Friendly)" data-bn="যোগা অনুশীলন (নতুনদের জন্য)">Yoga Practice (Beginner Friendly)</h4><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li><b>Mountain (Tadasana):</b> posture & grounding.</li><li><b>Downward Dog:</b> stretches whole body.</li><li><b>Child's Pose:</b> relaxes back & hips.</li><li><b>Cat-Cow:</b> spine mobility.</li><li><b>Warrior I & II:</b> strength & balance.</li><li><b>Tree Pose:</b> focus & stability.</li><li><b>Bridge Pose:</b> strengthens glutes/back.</li><li><b>Seated Forward Bend:</b> calms mind.</li><li><b>Corpse (Savasana):</b> final relaxation.</li></ul></div>
+  <div class="card"><h4 style="color:#e91e63;margin:0 0 8px" data-en="Bedtime Self-Care Routine" data-bn="ঘুমের আগের নিজের যত্ন">Bedtime Self-Care Routine</h4><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li>Set a consistent sleep time; aim 7-9 hours.</li><li>Dim lights & reduce screen use 1 hour before bed.</li><li>Gentle stretching or 5-min meditation.</li><li>Warm shower/bath to relax muscles.</li><li>Skincare: cleanse, moisturize, lip balm.</li><li>Write down tomorrow's 3 priorities.</li><li>Keep bedroom cool, dark, quiet.</li><li>Avoid heavy meals, caffeine, alcohol late at night.</li><li>Read a few pages or listen to calm music.</li><li>Gratitude reflection: 3 good things.</li></ul></div>
+  <div class="card"><h4 style="color:#e91e63;margin:0 0 8px" data-en="Healthy Eating Behaviour" data-bn="স্বাস্থ্যকর খাওয়ার অভ্যাস">Healthy Eating Behaviour</h4><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li>Eat mindfully: slow down, chew well, no screens.</li><li>Half plate veggies/fruits, quarter protein, quarter whole grains.</li><li>Drink water before meals; stay hydrated all day.</li><li>Include lean protein, healthy fats, fiber.</li><li>Limit sugar, ultra-processed foods, excess salt.</li><li>Don't skip breakfast; keep regular meal times.</li><li>Portion control: use smaller plates; stop at 80% full.</li><li>Snack smart: fruits, yogurt, nuts instead of chips.</li><li>Plan meals ahead; keep healthy options ready.</li><li>Listen to hunger cues; avoid emotional eating.</li></ul></div>
+  <div class="card"><h4 style="color:#e91e63;margin:0 0 8px" data-en="Everyday 10-Minute Walk" data-bn="প্রতিদিন ১০ মিনিট হাঁটা">Everyday 10-Minute Walk</h4><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li>Walk 10 min daily — morning, lunch, or evening.</li><li>Improves mood, circulation, digestion, sleep quality.</li><li>Helps weight management & reduces stress.</li><li>Walk briskly but comfortably; swing arms.</li><li>Use stairs, park farther, walk while on calls.</li><li>Track steps with phone; set small goals.</li><li>Walk with a friend or listen to podcast/music.</li><li>Wear comfortable shoes; stay hydrated.</li><li>Even 10 min adds up: ~1,000-1,200 steps.</li><li>Make it a habit: same time each day.</li></ul></div>
+  <div class="card"><h4 style="color:#e91e63;margin:0 0 8px" data-en="Hair Packs by Hair Type" data-bn="চুলের ধরন অনুযায়ী হেয়ার প্যাক">Hair Packs by Hair Type</h4><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li><b>Oily hair:</b> Aloe vera + lemon juice.</li><li><b>Dry hair:</b> Coconut/olive oil + honey mask.</li><li><b>Normal hair:</b> Yogurt + egg mask weekly.</li><li><b>Dandruff:</b> Fenugreek paste or neem + yogurt.</li><li><b>Frizzy hair:</b> Banana + honey + a little oil.</li><li><b>Hair fall:</b> Onion juice or amla + yogurt.</li><li><b>Dull hair:</b> Beer rinse or aloe + vitamin E oil.</li><li><b>Curly hair:</b> Avocado + shea butter mask.</li></ul></div>
+  <div class="card"><h4 style="color:#e91e63;margin:0 0 8px" data-en="Facial Packs by Skin Type" data-bn="ত্বকের ধরন অনুযায়ী ফেসিয়াল প্যাক">Facial Packs by Skin Type</h4><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li><b>Oily/Acne-prone:</b> Multani mitti + rose water.</li><li><b>Dry skin:</b> Honey + milk/cream + almond powder.</li><li><b>Combination:</b> Clay on T-zone, honey on cheeks.</li><li><b>Normal:</b> Papaya + honey mask.</li><li><b>Sensitive:</b> Aloe vera gel + cucumber.</li><li><b>Dull/Tan:</b> Tomato + lemon or gram flour + turmeric + milk.</li><li><b>Aging skin:</b> Avocado + honey + olive oil.</li><li><b>Pigmentation:</b> Potato juice + honey.</li></ul></div>
+  <div class="card"><h4 style="color:#e91e63;margin:0 0 8px" data-en="Islamic & Religious Behaviour / Values" data-bn="ইসলামিক ও ধর্মীয় আচরণ / মূল্যবোধ">Islamic & Religious Behaviour / Values</h4><ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13px"><li><b>Prayer (Salah):</b> Pray 5 times daily on time.</li><li><b>Charity (Zakat/Sadaqah):</b> Give regularly to those in need.</li><li><b>Honesty & Trust:</b> Speak truth; keep promises.</li><li><b>Modesty:</b> Dress and behave modestly.</li><li><b>Kindness:</b> Be gentle with family, neighbors, animals.</li><li><b>Patience (Sabr):</b> Stay calm in hardship.</li><li><b>Gratitude (Shukr):</b> Thank Allah for blessings.</li><li><b>Forgiveness:</b> Forgive others.</li><li><b>Knowledge:</b> Seek beneficial knowledge.</li><li><b>Respect for all faiths:</b> Honor others' beliefs.</li><li><b>General values:</b> Love, compassion, service, humility, justice.</li></ul></div>
+  <div class="tip" data-en="Informational only; consult professionals for medical/fitness advice." data-bn="শুধু তথ্যের জন্য; চিকিৎসা পরামর্শের জন্য বিশেষজ্ঞের সাথে কথা বলুন।">Informational only; consult professionals for medical/fitness advice.</div>
+</div>
+
+<div id="calorie" class="panel">
+  <h3 data-en="Calorie & Calorie Intake" data-bn="ক্যালরি ও ক্যালরি গ্রহণ">Calorie & Calorie Intake</h3>
+  <div class="card">
+    <h4 style="color:#ff6f00;margin:0 0 8px" data-en="1. Daily Calorie Need (Women)" data-bn="১. দৈনিক ক্যালরি প্রয়োজন (মহিলা)">1. Daily Calorie Need (Women)</h4>
+    <label data-en="Age" data-bn="বয়স">Age</label><input type="number" id="cal_age" placeholder="25">
+    <label data-en="Height (cm)" data-bn="উচ্চতা (সেমি)">Height (cm)</label><input type="number" id="cal_h" placeholder="160">
+    <label data-en="Weight (kg)" data-bn="ওজন (কেজি)">Weight (kg)</label><input type="number" id="cal_w" placeholder="55">
+    <label data-en="Activity Level" data-bn="কাজের মাত্রা">Activity Level</label>
+    <select id="cal_act"><option value="1.2" data-en="Sedentary - little exercise" data-bn="অলস - কম ব্যায়াম">Sedentary - little exercise</option><option value="1.375" data-en="Light - 1-3 days/week" data-bn="হালকা - সপ্তাহে ১-৩ দিন">Light - 1-3 days/week</option><option value="1.55" data-en="Moderate - 3-5 days/week" data-bn="মাঝারি - সপ্তাহে ৩-৫ দিন">Moderate - 3-5 days/week</option><option value="1.725" data-en="Active - 6-7 days/week" data-bn="সক্রিয় - সপ্তাহে ৬-৭ দিন">Active - 6-7 days/week</option><option value="1.9" data-en="Very Active" data-bn="খুব সক্রিয়">Very Active</option></select>
+    <label data-en="Goal" data-bn="লক্ষ্য">Goal</label>
+    <select id="cal_goal"><option value="0" data-en="Maintain Weight" data-bn="ওজন ধরে রাখা">Maintain Weight</option><option value="-500" data-en="Lose Weight (-500 cal)" data-bn="ওজন কমানো (-৫০০ ক্যালরি)">Lose Weight (-500 cal)</option><option value="-300" data-en="Slow Lose (-300 cal)" data-bn="ধীরে কমানো (-৩০০ ক্যালরি)">Slow Lose (-300 cal)</option><option value="300" data-en="Gain Weight (+300 cal)" data-bn="ওজন বাড়ানো (+৩০০ ক্যালরি)">Gain Weight (+300 cal)</option><option value="500" data-en="Fast Gain (+500 cal)" data-bn="দ্রুত বাড়ানো (+৫০০ ক্যালরি)">Fast Gain (+500 cal)</option></select>
+    <button class="btn btn-calorie" onclick="calorieNeed()" data-en="Calculate My Calorie Need" data-bn="আমার ক্যালরি প্রয়োজন হিসাব করুন">Calculate My Calorie Need</button>
+    <div id="cal_need" class="result"></div>
+  </div>
+  <div class="card">
+    <h4 style="color:#ff6f00;margin:0 0 8px" data-en="2. Food Calorie Tracker" data-bn="২. খাবারের ক্যালরি ট্র্যাকার">2. Food Calorie Tracker</h4>
+    <label data-en="Select Food" data-bn="খাবার বেছে নিন">Select Food</label>
+    <select id="food_sel">
+      <option value="200|Bhat 1 Cup">Bhat 1 Cup - 200 cal</option>
+      <option value="80|Ruti 1 ta">Ruti 1 ta - 80 cal</option>
+      <option value="70|Dim 1 ta">Dim 1 ta - 70 cal</option>
+      <option value="150|Dudh 1 Glass">Dudh 1 Glass - 150 cal</option>
+      <option value="250|Chicken Curry 1 Bowl">Chicken Curry 1 Bowl - 250 cal</option>
+      <option value="300|Beef Curry 1 Bowl">Beef Curry 1 Bowl - 300 cal</option>
+      <option value="180|Fish Curry 1 Piece">Fish Curry 1 Piece - 180 cal</option>
+      <option value="120|Dal 1 Bowl">Dal 1 Bowl - 120 cal</option>
+      <option value="150|Sabji 1 Bowl">Sabji 1 Bowl - 150 cal</option>
+      <option value="100|Apple 1 ta">Apple 1 ta - 100 cal</option>
+      <option value="105|Banana 1 ta">Banana 1 ta - 105 cal</option>
+      <option value="50|Salad 1 Bowl">Salad 1 Bowl - 50 cal</option>
+      <option value="350|Biriyani 1 Plate">Biriyani 1 Plate - 350 cal</option>
+      <option value="280|Khichuri 1 Plate">Khichuri 1 Plate - 280 cal</option>
+      <option value="250|Paratha 1 ta">Paratha 1 ta - 250 cal</option>
+      <option value="140|Cha / Coffee 1 Cup">Cha / Coffee 1 Cup - 140 cal</option>
+      <option value="150|Singara 1 ta">Singara 1 ta - 150 cal</option>
+      <option value="200|Burger 1 ta">Burger 1 ta - 200 cal</option>
+      <option value="300|Pizza 1 Slice">Pizza 1 Slice - 300 cal</option>
+      <option value="140|Coke 1 Can">Coke 1 Can - 140 cal</option>
+    </select>
+    <label data-en="Quantity" data-bn="পরিমাণ">Quantity</label><input type="number" id="food_qty" value="1" min="1">
+    <button class="btn btn-calorie" onclick="addFood()" data-en="+ Add Food" data-bn="+ খাবার যোগ করুন">+ Add Food</button>
+    <div id="food_list" class="result">Ekhono kichu add koroni.</div>
+    <div id="food_total" class="result" style="background:#fff3e0">Total Eaten: 0 cal</div>
+    <button class="btn" style="background:#999" onclick="resetFood()" data-en="Reset Day" data-bn="দিন রিসেট করুন">Reset Day</button>
+  </div>
+  <div class="tip" data-en="Tip: To lose weight eat 300-500 cal less than Daily Need. To gain eat 300-500 cal more." data-bn="টিপস: ওজন কমাতে দৈনিক প্রয়োজন থেকে ৩০০-৫০০ ক্যালরি কম খান। বাড়াতে ৩০০-৫০০ বেশি খান।">Tip: To lose weight eat 300-500 cal less than Daily Need. To gain eat 300-500 cal more.</div>
+</div>
+
+<div class="footer">
+  <span data-en="Women & Girls Lifestyle Hub" data-bn="মহিলা ও মেয়েদের লাইফস্টাইল হাব">Women & Girls Lifestyle Hub</span><br>
+  <span data-en="Developed by" data-bn="তৈরি করেছেন">Developed by</span> <b>Dr. Sumaiya Mohammad</b>, Bangladesh<br>
+  <span data-en="Made with love for girls & women" data-bn="মেয়েদের জন্য ভালোবাসা দিয়ে তৈরি">Made with love for girls & women</span><br>
+  2026
+</div>
+
+<script>
+let curLang='en';
+function toggleLang(){
+  curLang = curLang==='en' ? 'bn' : 'en';
+  document.getElementById('langBtn').textContent = curLang==='en' ? 'বাংলা' : 'English';
+  document.documentElement.lang = curLang==='en' ? 'en' : 'bn';
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    el.textContent = curLang==='en' ? el.getAttribute('data-en') : el.getAttribute('data-bn');
+  });
+  // placeholders stay english numbers - keep only language pure
+  if(curLang==='bn'){
+    document.getElementById('food_list').innerHTML = eatenList.length? eatenList.join('<br>') : 'এখনো কিছু যোগ করেননি।';
+  } else {
+    document.getElementById('food_list').innerHTML = eatenList.length? eatenList.join('<br>') : 'Nothing added yet.';
+  }
+}
+function showTab(e,id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');e.target.classList.add('active');}
+function makeupShade(){const tone=document.getElementById('m_tone').value;const type=document.getElementById('m_type').value;const shades={fair:'Ivory / Porcelain',light:'Light Beige',medium:'Natural Beige',tan:'Warm Honey',deep:'Espresso / Deep'};const primer={oily:'Mattifying primer, oil-free foundation',dry:'Hydrating primer, dewy foundation',combo:'Balancing primer, satin finish',normal:'Any primer, natural finish'};document.getElementById('m_res').innerHTML='Foundation Shade: '+shades[tone]+'<br>Primer/Foundation: '+primer[type]+'<br>Blush: '+(tone==='fair'||tone==='light'?'Soft pink/peach':'Coral/bronze')+'<br>Highlighter: '+(tone==='deep'?'Gold/copper':'Champagne/pearl');}
+function lipstickRec(){const occ=document.getElementById('m_occ').value;const rec={daily:'Nude pink, dusty rose, mauve',party:'Bold red, berry, fuchsia',bridal:'Classic red or soft pink with gloss',festive:'Deep berry, terracotta, gold shimmer'};document.getElementById('m_lip').innerHTML='Recommended: '+rec[occ]+'<br><span class="chip">Lip liner</span><span class="chip">Gloss</span><span class="chip">Balm</span>';}
+function makeupBudget(){const b=+document.getElementById('m_budget').value||0;if(b<=0){document.getElementById('m_bud').innerHTML='Enter budget';return;}const items=[['Foundation',0.25],['Lipstick (x2)',0.15],['Mascara',0.10],['Blush',0.10],['Eyeshadow',0.15],['Tools/Brushes',0.15],['Skincare base',0.10]];let html='Budget Plan '+b.toLocaleString()+'<br>';items.forEach(([n,p])=>{html+=n+': '+Math.round(b*p).toLocaleString()+'<br>';});document.getElementById('m_bud').innerHTML=html;}
+function sizeCalc(){const bust=+document.getElementById('c_bust').value,waist=+document.getElementById('c_waist').value,hip=+document.getElementById('c_hip').value;if(!bust||!waist||!hip){document.getElementById('c_size').innerHTML='Enter measurements';return;}let size;if(bust<=32 && waist<=26 && hip<=34) size='XS';else if(bust<=34 && waist<=28 && hip<=36) size='S';else if(bust<=36 && waist<=30 && hip<=38) size='M';else if(bust<=38 && waist<=32 && hip<=40) size='L';else if(bust<=40 && waist<=34 && hip<=42) size='XL';else size='XXL+';document.getElementById('c_size').innerHTML='Your Size: '+size+'<br>Bust '+bust+'" Waist '+waist+'" Hip '+hip+'"';}
+function bodyTips(){const t=document.getElementById('c_body').value;const tips={pear:'A-line skirts, wide-leg pants, boat-neck tops.',apple:'Empire waist, V-necks, flowy tunics.',hourglass:'Wrap dresses, fitted waists, belted outfits.',rectangle:'Peplum tops, ruffles, layered looks.',inverted:'Wide-leg pants, full skirts; balance broad shoulders.'};document.getElementById('c_tips').innerHTML='Tips: '+tips[t];}
+const colorMap={red:['black','white','gold','navy'],blue:['white','grey','yellow','orange'],green:['beige','brown','gold','white'],pink:['grey','white','navy','mint'],black:['red','white','gold','any bright'],white:['any color','pastels','bold brights'],yellow:['navy','grey','white','purple'],purple:['grey','gold','pink','white']};
+function colorMatch(){const c=document.getElementById('c_color').value;document.getElementById('c_match').innerHTML=c.charAt(0).toUpperCase()+c.slice(1)+' pairs well with: '+colorMap[c].join(', ')+'.';}
+const compMap={red:'Green (try a green dupatta/shoes/bag)',blue:'Orange/Coral (warm accessories)',green:'Red/Maroon (bold contrast)',pink:'Teal/Mint or Green',black:'White/Gold/Silver (classic)',white:'Any bold color (red, blue, black)',yellow:'Purple/Lavender',purple:'Yellow/Gold',orange:'Blue/Navy',teal:'Coral/Pink/Orange'};
+function compColor(){const c=document.getElementById('comp_color').value;document.getElementById('comp_res').innerHTML='<b>'+c.charAt(0).toUpperCase()+c.slice(1)+'</b> dress pairs best with: '+compMap[c]+'.';}
+function clothBudget(){const b=+document.getElementById('c_budget').value||0;if(b<=0){document.getElementById('c_bud').innerHTML='Enter budget';return;}const items=[['Dresses/Kurtis',0.30],['Tops/T-shirts',0.20],['Bottoms',0.15],['Shoes',0.15],['Accessories',0.10],['Undergarments',0.10]];let html='Wardrobe Plan '+b.toLocaleString()+'<br>';items.forEach(([n,p])=>{html+=n+': '+Math.round(b*p).toLocaleString()+'<br>';});document.getElementById('c_bud').innerHTML=html;}
+function periodCalc(){const lmp=document.getElementById('h_lmp').value;const cycle=+document.getElementById('h_cycle').value||28;if(!lmp){document.getElementById('h_period').innerHTML='Select date';return;}const d=new Date(lmp);const next=new Date(d);next.setDate(d.getDate()+cycle);const ovu=new Date(d);ovu.setDate(d.getDate()+Math.round(cycle/2));const fertS=new Date(ovu);fertS.setDate(ovu.getDate()-5);const fertE=new Date(ovu);fertE.setDate(ovu.getDate()+1);const fmt=x=>x.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});document.getElementById('h_period').innerHTML='Next Period: '+fmt(next)+'<br>Ovulation: '+fmt(ovu)+'<br>Fertile Window: '+fmt(fertS)+' - '+fmt(fertE);}
+function pregCalc(){const lmp=document.getElementById('h_preg').value;if(!lmp){document.getElementById('h_pregres').innerHTML='Select LMP';return;}const d=new Date(lmp);const due=new Date(d);due.setDate(d.getDate()+280);const fmt=x=>x.toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});document.getElementById('h_pregres').innerHTML='Estimated Due Date: '+fmt(due)+'<br><small>(Naegele rule, +/-2 weeks)</small>';}
+function bmiCalc(){const h=+document.getElementById('h_h').value,w=+document.getElementById('h_w').value;if(!h||!w){document.getElementById('h_bmi').innerHTML='Enter height & weight';return;}const bmi=w/((h/100)**2);let cat;if(bmi<18.5)cat='Underweight';else if(bmi<25)cat='Normal';else if(bmi<30)cat='Overweight';else cat='Obese';const idealLow=18.5*(h/100)**2,idealHigh=24.9*(h/100)**2;document.getElementById('h_bmi').innerHTML='BMI: '+bmi.toFixed(1)+' - '+cat+'<br>Ideal Weight Range: '+idealLow.toFixed(1)+'-'+idealHigh.toFixed(1)+' kg';}
+function waterCalc(){const w=+document.getElementById('h_w').value||60;const glasses=Math.round((w*0.033)/0.25);document.getElementById('h_water').innerHTML='Daily Water: ~'+(w*0.033).toFixed(2)+' L = '+glasses+' glasses (250ml)';}
+let dailyTarget=2000;let eatenTotal=0;let eatenList=[];
+function calorieNeed(){const age=+document.getElementById('cal_age').value;const h=+document.getElementById('cal_h').value;const w=+document.getElementById('cal_w').value;const act=+document.getElementById('cal_act').value;const goal=+document.getElementById('cal_goal').value;if(!age||!h||!w){document.getElementById('cal_need').innerHTML= curLang==='bn' ? 'বয়স, উচ্চতা, ওজন দিন' : 'Enter Age, Height, Weight';return;}const bmr=655+(9.6*w)+(1.8*h)-(4.7*age);const tdee=bmr*act;dailyTarget=Math.round(tdee+goal);document.getElementById('cal_need').innerHTML= curLang==='bn' ? 'BMR: '+Math.round(bmr)+' ক্যালরি<br>দৈনিক প্রয়োজন: '+Math.round(tdee)+' ক্যালরি<br><b>আপনার টার্গেট: '+dailyTarget+' ক্যালরি / দিন</b>' : 'BMR: '+Math.round(bmr)+' cal<br>Daily Need (TDEE): '+Math.round(tdee)+' cal<br><b>Your Target: '+dailyTarget+' cal / day</b><br>Protein: '+Math.round(dailyTarget*0.25/4)+'g | Carbs: '+Math.round(dailyTarget*0.45/4)+'g | Fat: '+Math.round(dailyTarget*0.30/9)+'g';document.getElementById('food_total').innerHTML='Total Eaten: '+eatenTotal+' cal | Target: '+dailyTarget+' cal | Left: '+(dailyTarget-eatenTotal)+' cal';}
+function addFood(){const sel=document.getElementById('food_sel').value;const parts=sel.split('|');const cal=+parts[0];const name=parts[1];const qty=+document.getElementById('food_qty').value||1;const total=cal*qty;eatenTotal+=total;eatenList.push(name+' x'+qty+' = '+total+' cal');document.getElementById('food_list').innerHTML=eatenList.join('<br>');document.getElementById('food_total').innerHTML='Total Eaten: '+eatenTotal+' cal | Target: '+dailyTarget+' cal | Left: '+(dailyTarget-eatenTotal)+' cal'+(eatenTotal>dailyTarget?' <br><b style="color:red">Target crossed!</b>':' <br><b style="color:green">Going well!</b>');}
+function resetFood(){eatenTotal=0;eatenList=[];document.getElementById('food_list').innerHTML= curLang==='bn' ? 'এখনো কিছু যোগ করেননি।' : 'Nothing added yet.';document.getElementById('food_total').innerHTML='Total Eaten: 0 cal | Target: '+dailyTarget+' cal';}
+</script>
+</body>
+</html>
