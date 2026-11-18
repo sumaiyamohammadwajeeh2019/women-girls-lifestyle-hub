@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Women & Girls Lifestyle Hub</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<meta name="theme-color" content="#e91e63">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;max-width:480px;margin:0 auto;background:#fce4ec}
+.header{background:linear-gradient(135deg,#e91e63,#9c27b0);color:#fff;padding:18px;text-align:center;position:relative}
+.header h2{font-size:20px}
+.header div{font-size:11px;color:#fce4ec;margin-top:4px}
+.langBtn{position:absolute;top:12px;right:12px;background:#fff;color:#e91e63;border:0;padding:6px 12px;border-radius:20px;font-weight:700;cursor:pointer}
+.tabs{display:flex;background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.tab{flex:1;padding:12px;text-align:center;cursor:pointer;border-bottom:3px solid #eee;font-weight:700;font-size:11px;color:#555}
+.tab.active{border-color:#e91e63;color:#e91e63;background:#fce4ec}
+.panel{display:none;padding:15px;background:#fff;margin:10px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.panel.active{display:block}
+h3{color:#9c27b0;margin:8px 0 12px}
+label{display:block;font-size:13px;color:#444;margin-top:8px;font-weight:600}
+input,select{width:100%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:8px;font-size:14px}
+.btn{width:100%;padding:12px;border:0;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;margin-top:10px;color:#fff}
+.btn-makeup{background:linear-gradient(90deg,#e91e63,#f06292)}
+.btn-cloth{background:linear-gradient(90deg,#9c27b0,#ba68c8)}
+.btn-health{background:linear-gradient(90deg,#00897b,#4db6ac)}
+.btn-cal{background:linear-gradient(90deg,#ff9800,#ffb74d)}
+.result{background:#f3e5f5;padding:12px;border-radius:8px;margin-top:10px;line-height:1.7;border:1px dashed #ce93d8;font-size:14px}
+.tip{background:#fff8e1;border-left:4px solid #ffc107;padding:10px;margin:8px 0;border-radius:6px;font-size:13px}
+.card{background:#fafafa;border:1px solid #eee;border-radius:10px;padding:12px;margin:8px 0}
+.footer{background:#4a148c;color:#f3e5f5;text-align:center;padding:14px;font-size:12px;margin-top:15px}
+.chip{display:inline-block;background:#f8bbd0;color:#880e4f;padding:4px 10px;border-radius:20px;font-size:12px;margin:3px}
+ul{padding-left:18px;line-height:1.7;font-size:13px}
+</style>
+</head>
+<body>
+<div class="header">
+<button class="langBtn" id="langBtn" onclick="toggleLang()">বাংলা</button>
+<img src="logo.png" width="52" height="52" style="border-radius:50%;background:#fff;padding:2px" alt="Logo">
+<h2 data-en="Women & Girls Lifestyle Hub" data-bn="নারী ও মেয়েদের লাইফস্টাইল হাব">Women & Girls Lifestyle Hub</h2>
+<div data-en="Makeup | Clothing | Health | Calorie" data-bn="মেকআপ | পোশাক | স্বাস্থ্য | ক্যালোরি">Makeup | Clothing | Health | Calorie</div>
+</div>
+
+<div class="tabs">
+<div class="tab active" onclick="showTab(event,'makeup')" data-en="MAKEUP" data-bn="মেকআপ">MAKEUP</div>
+<div class="tab" onclick="showTab(event,'cloth')" data-en="CLOTHING" data-bn="পোশাক">CLOTHING</div>
+<div class="tab" onclick="showTab(event,'health')" data-en="HEALTH" data-bn="স্বাস্থ্য">HEALTH</div>
+<div class="tab" onclick="showTab(event,'calorie')" data-en="CALORIE" data-bn="ক্যালোরি">CALORIE</div>
+<div class="tab" onclick="showTab(event,'wellness')" data-en="WELLNESS" data-bn="সুস্থতা">WELLNESS</div>
+</div>
+
+<div id="makeup" class="panel active">
+<h3 data-en="Makeup Studio" data-bn="মেকআপ স্টুডিও">Makeup Studio</h3>
+<div class="card">
+<label data-en="Skin Tone" data-bn="ত্বকের রং">Skin Tone</label>
+<select id="m_tone"><option value="fair">Fair</option><option value="light">Light</option><option value="medium">Medium</option><option value="tan">Tan</option><option value="deep">Deep</option></select>
+<label data-en="Skin Type" data-bn="ত্বকের ধরন">Skin Type</label>
+<select id="m_type"><option value="oily">Oily</option><option value="dry">Dry</option><option value="combo">Combination</option><option value="normal">Normal</option></select>
+<button class="btn btn-makeup" onclick="makeupShade()" data-en="Find My Shade" data-bn="আমার শেড খুঁজুন">Find My Shade</button>
+<div id="m_res" class="result"></div>
+</div>
+<div class="card">
+<label data-en="Occasion" data-bn="উপলক্ষ">Occasion</label>
+<select id="m_occ"><option value="daily">Daily / Office</option><option value="party">Party / Event</option><option value="bridal">Bridal</option><option value="festive">Festive</option></select>
+<button class="btn btn-makeup" onclick="lipstickRec()" data-en="Lipstick Recommendation" data-bn="লিপস্টিক সাজেশন">Lipstick Recommendation</button>
+<div id="m_lip" class="result"></div>
+</div>
+<div class="card">
+<label data-en="Makeup Budget" data-bn="মেকআপ বাজেট">Makeup Budget</label>
+<input type="number" id="m_budget" placeholder="5000">
+<button class="btn btn-makeup" onclick="makeupBudget()" data-en="Plan Budget" data-bn="বাজেট পরিকল্পনা">Plan Budget</button>
+<div id="m_bud" class="result"></div>
+</div>
+<div class="card"><h4>Daily Makeup Tips</h4><ul><li>Clean, moisturized skin + SPF.</li><li>Light BB/CC cream, spot-conceal only.</li><li>Soft brows, brush up.</li><li>Neutral eyeshadow + thin liner.</li><li>One coat mascara.</li><li>Cream blush for natural flush.</li><li>Highlighter on high points.</li><li>Lip tint or nude lipstick.</li><li>Set T-zone with powder.</li><li>Remove fully before bed.</li></ul></div>
+</div>
+
+<div id="cloth" class="panel">
+<h3>Clothing & Style</h3>
+<div class="card">
+<label>Bust (inches)</label><input type="number" id="c_bust" placeholder="34">
+<label>Waist (inches)</label><input type="number" id="c_waist" placeholder="28">
+<label>Hip (inches)</label><input type="number" id="c_hip" placeholder="36">
+<button class="btn btn-cloth" onclick="sizeCalc()">Find My Size</button><div id="c_size" class="result"></div>
+</div>
+<div class="card">
+<label>Body Type</label>
+<select id="c_body"><option value="pear">Pear</option><option value="apple">Apple</option><option value="hourglass">Hourglass</option><option value="rectangle">Rectangle</option><option value="inverted">Inverted Triangle</option></select>
+<button class="btn btn-cloth" onclick="bodyTips()">Styling Tips</button><div id="c_tips" class="result"></div>
+</div>
+<div class="card">
+<label>Base Color</label>
+<select id="c_color"><option value="red">Red</option><option value="blue">Blue</option><option value="green">Green</option><option value="pink">Pink</option><option value="black">Black</option><option value="white">White</option><option value="yellow">Yellow</option><option value="purple">Purple</option></select>
+<button class="btn btn-cloth" onclick="colorMatch()">Color Match</button><div id="c_match" class="result"></div>
+</div>
+<div class="card">
+<label>Clothing Budget</label><input type="number" id="c_budget" placeholder="10000">
+<button class="btn btn-cloth" onclick="clothBudget()">Plan Wardrobe</button><div id="c_bud" class="result"></div>
+</div>
+<div class="card"><h4>Complementary Colors</h4><label>Choose Dress Color</label><select id="comp_color"><option value="red">Red</option><option value="blue">Blue</option><option value="green">Green</option><option value="pink">Pink</option><option value="black">Black</option><option value="white">White</option><option value="yellow">Yellow</option><option value="purple">Purple</option><option value="orange">Orange</option><option value="teal">Teal</option></select><button class="btn btn-cloth" onclick="compColor()">Find Complement</button><div id="comp_res" class="result"></div><ul><li>Red ↔ Green</li><li>Blue ↔ Orange</li><li>Yellow ↔ Purple</li><li>Pink ↔ Green/Teal</li><li>Black ↔ White/Gold</li><li>Teal ↔ Coral/Pink</li></ul></div>
+</div>
+
+<div id="health" class="panel">
+<h3>Women's Health</h3>
+<div class="card"><label>Last Period Start Date</label><input type="date" id="h_lmp"><label>Average Cycle Length (days)</label><input type="number" id="h_cycle" value="28"><button class="btn btn-health" onclick="periodCalc()">Calculate</button><div id="h_period" class="result"></div></div>
+<div class="card"><label>LMP (Pregnancy Due Date)</label><input type="date" id="h_preg"><button class="btn btn-health" onclick="pregCalc()">Due Date</button><div id="h_pregres" class="result"></div></div>
+<div class="card"><label>Height (cm)</label><input type="number" id="h_h" placeholder="160"><label>Weight (kg)</label><input type="number" id="h_w" placeholder="55"><label>Age</label><input type="number" id="h_age" placeholder="25"><button class="btn btn-health" onclick="bmiCalc()">BMI & Ideal Weight</button><div id="h_bmi" class="result"></div></div>
+<div class="card"><label>Daily Water</label><button class="btn btn-health" onclick="waterCalc()">Water Intake</button><div id="h_water" class="result"></div></div>
+<div class="tip">Consult a doctor for medical advice. Informational only.</div>
+</div>
+
+<div id="calorie" class="panel">
+<h3>Calorie Intake</h3>
+<div class="card">
+<label>Age</label><input type="number" id="cal_age" placeholder="25">
+<label>Gender</label><select id="cal_gender"><option value="female">Female</option><option value="male">Male</option></select>
+<label>Height (cm)</label><input type="number" id="cal_h" placeholder="160">
+<label>Weight (kg)</label><input type="number" id="cal_w" placeholder="55">
+<label>Activity Level</label><select id="cal_act"><option value="1.2">Sedentary</option><option value="1.375">Lightly Active</option><option value="1.55">Moderately Active</option><option value="1.725">Very Active</option><option value="1.9">Extra Active</option></select>
+<label>Goal</label><select id="cal_goal"><option value="0">Maintain Weight</option><option value="-500">Lose Weight</option><option value="500">Gain Weight</option></select>
+<button class="btn btn-cal" onclick="calcCalorie()">Calculate Calorie</button>
+<div id="cal_res" class="result"></div>
+</div>
+<div class="card"><h4>Common Foods (per serving)</h4><ul><li>Rice (1 cup) - 200 kcal</li><li>Roti (1 pc) - 120 kcal</li><li>Egg (1 pc) - 70 kcal</li><li>Chicken (100g) - 165 kcal</li><li>Dal (1 cup) - 150 kcal</li><li>Milk (1 glass) - 150 kcal</li><li>Banana (1 pc) - 105 kcal</li><li>Apple (1 pc) - 95 kcal</li></ul></div>
+<div class="tip">This is an estimate. Consult a nutritionist for a personal plan.</div>
+</div>
+
+<div id="wellness" class="panel">
+<h3>Wellness & Self-Care</h3>
+<div class="card"><h4>Dress Code for Different Jobs</h4><ul><li><b>Corporate:</b> Blazer, formal shirt, tailored pants, closed shoes.</li><li><b>Teaching:</b> Modest kurti / saree, comfortable flats.</li><li><b>Healthcare:</b> Scrubs, hair tied, closed shoes.</li><li><b>Retail:</b> Smart casual, neat grooming.</li><li><b>IT:</b> Casual but neat.</li><li><b>Creative:</b> Trendy, statement pieces.</li><li><b>Field:</b> Durable fabrics, sun protection.</li><li><b>Remote:</b> Camera-ready top.</li></ul></div>
+<div class="card"><h4>Mood Elevation Tips</h4><ul><li>5 min gratitude journaling.</li><li>Upbeat music / podcast.</li><li>10-15 min sunlight.</li><li>Connect with a friend.</li><li>One small task for momentum.</li><li>Limit doom-scrolling.</li><li>Deep breathing 4-7-8.</li><li>Wear colors you love.</li></ul></div>
+<div class="card"><h4>Menstrual Pain & Migraine Relief</h4><ul><li>Heat pad on lower abdomen.</li><li>Gentle yoga: child's pose, cat-cow.</li><li>Warm water, ginger tea.</li><li>Light walk.</li><li>Magnesium foods: nuts, spinach.</li><li>Dark quiet room for migraine, cold compress.</li><li>Hydrate, avoid triggers.</li></ul></div>
+<div class="card"><h4>Daily Morning Self-Care</h4><ul><li>Consistent wake time.</li><li>Glass of water.</li><li>5-10 min stretching.</li><li>Wash face, moisturize, SPF.</li><li>Healthy breakfast.</li><li>Set 3 priorities.</li><li>10 min mindfulness.</li></ul></div>
+<div class="card"><h4>Yoga Practice</h4><ul><li>Mountain, Downward Dog, Child's Pose, Cat-Cow, Warrior I & II, Tree Pose, Bridge Pose, Seated Forward Bend, Savasana.</li></ul></div>
+<div class="card"><h4>Bedtime Self-Care</h4><ul><li>Consistent sleep time, 7-9 hours.</li><li>No screen 1 hour before bed.</li><li>Warm shower, skincare.</li><li>Write tomorrow's 3 priorities.</li><li>Cool, dark, quiet room.</li></ul></div>
+<div class="card"><h4>Healthy Eating Behaviour</h4><ul><li>Eat mindfully, chew well.</li><li>Half plate veggies, quarter protein, quarter grains.</li><li>Water before meals.</li><li>Limit sugar, processed food, salt.</li><li>Portion control, stop at 80% full.</li></ul></div>
+<div class="card"><h4>Everyday 10-Minute Walk</h4><ul><li>Walk 10 min daily.</li><li>Improves mood, digestion, sleep.</li><li>Brisk walk, swing arms.</li><li>Use stairs, park farther.</li></ul></div>
+<div class="card"><h4>Hair Packs</h4><ul><li><b>Oily:</b> Aloe + lemon.</li><li><b>Dry:</b> Coconut oil + honey.</li><li><b>Dandruff:</b> Fenugreek paste.</li><li><b>Frizzy:</b> Banana + honey.</li><li><b>Hair fall:</b> Onion juice / amla + yogurt.</li></ul></div>
+<div class="card"><h4>Facial Packs</h4><ul><li><b>Oily:</b> Multani mitti + rose water.</li><li><b>Dry:</b> Honey + milk.</li><li><b>Combination:</b> Clay on T-zone, honey on cheeks.</li><li><b>Sensitive:</b> Aloe + cucumber.</li></ul></div>
+<div class="card"><h4>Values</h4><ul><li>Prayer 5 times daily.</li><li>Charity, honesty, modesty, kindness.</li><li>Patience, gratitude, forgiveness.</li><li>Seek knowledge, respect all faiths.</li></ul></div>
+</div>
+
+<div class="footer">Women & Girls Lifestyle Hub<br>Developed by <b>Dr. Sumaiya Mohammad</b>, Bangladesh<br>Made with love for girls & women<br>2026</div>
+
+<script>
+let curLang='en';
+function toggleLang(){
+curLang=curLang==='en'?'bn':'en';
+document.querySelectorAll('[data-en]').forEach(el=>{el.textContent=curLang==='en'?el.dataset.en:el.dataset.bn});
+document.getElementById('langBtn').textContent=curLang==='en'?'বাংলা':'English';
+document.documentElement.lang=curLang;
+}
+function showTab(e,id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');e.target.classList.add('active');}
+function makeupShade(){const tone=document.getElementById('m_tone').value;const type=document.getElementById('m_type').value;const shades={fair:'Ivory / Porcelain',light:'Light Beige',medium:'Natural Beige',tan:'Warm Honey',deep:'Espresso / Deep'};const primer={oily:'Mattifying primer, oil-free foundation',dry:'Hydrating primer, dewy foundation',combo:'Balancing primer, satin finish',normal:'Any primer, natural finish'};document.getElementById('m_res').innerHTML='Foundation Shade: '+shades[tone]+'<br>Primer: '+primer[type];}
+function lipstickRec(){const occ=document.getElementById('m_occ').value;const rec={daily:'Nude pink, dusty rose, mauve',party:'Bold red, berry, fuchsia',bridal:'Classic red or soft pink',festive:'Deep berry, terracotta, gold shimmer'};document.getElementById('m_lip').innerHTML='Recommended: '+rec[occ];}
+function makeupBudget(){const b=+document.getElementById('m_budget').value||0;if(!b){document.getElementById('m_bud').innerHTML='Enter budget';return;}const items=[['Foundation',.25],['Lipstick (x2)',.15],['Mascara',.10],['Blush',.10],['Eyeshadow',.15],['Tools',.15],['Skincare',.10]];let h='Budget: '+b+'<br>';items.forEach(([n,p])=>h+=n+': '+Math.round(b*p)+'<br>');document.getElementById('m_bud').innerHTML=h;}
+function sizeCalc(){const bust=+document.getElementById('c_bust').value,waist=+document.getElementById('c_waist').value,hip=+document.getElementById('c_hip').value;if(!bust||!waist||!hip){document.getElementById('c_size').innerHTML='Enter measurements';return;}let s;if(bust<=32&&waist<=26&&hip<=34)s='XS';else if(bust<=34&&waist<=28&&hip<=36)s='S';else if(bust<=36&&waist<=30&&hip<=38)s='M';else if(bust<=38&&waist<=32&&hip<=40)s='L';else if(bust<=40&&waist<=34&&hip<=42)s='XL';else s='XXL+';document.getElementById('c_size').innerHTML='Your Size: '+s;}
+function bodyTips(){const t=document.getElementById('c_body').value;const tips={pear:'A-line skirts, wide-leg pants, boat-neck tops.',apple:'Empire waist, V-necks, flowy tunics.',hourglass:'Wrap dresses, fitted waists, belted outfits.',rectangle:'Peplum tops, ruffles, layered looks.',inverted:'Wide-leg pants, full skirts.'};document.getElementById('c_tips').innerHTML='Tips: '+tips[t];}
+function colorMatch(){const c=document.getElementById('c_color').value;const m={red:'black, white, gold',blue:'white, grey, yellow',green:'beige, brown, gold',pink:'grey, white, navy',black:'red, white, gold',white:'any color',yellow:'navy, grey, white',purple:'grey, gold, pink'};document.getElementById('c_match').innerHTML=c+' pairs with: '+m[c];}
+function compColor(){const c=document.getElementById('comp_color').value;const m={red:'Green',blue:'Orange/Coral',green:'Red/Maroon',pink:'Teal/Mint',black:'White/Gold',white:'Any bold color',yellow:'Purple',purple:'Yellow/Gold',orange:'Blue/Navy',teal:'Coral/Pink'};document.getElementById('comp_res').innerHTML=c+' pairs best with: '+m[c];}
+function clothBudget(){const b=+document.getElementById('c_budget').value||0;if(!b){document.getElementById('c_bud').innerHTML='Enter budget';return;}const items=[['Dresses/Kurtis',.30],['Tops',.20],['Bottoms',.15],['Shoes',.15],['Accessories',.10],['Undergarments',.10]];let h='Wardrobe: '+b+'<br>';items.forEach(([n,p])=>h+=n+': '+Math.round(b*p)+'<br>');document.getElementById('c_bud').innerHTML=h;}
+function periodCalc(){const lmp=document.getElementById('h_lmp').value;const cycle=+document.getElementById('h_cycle').value||28;if(!lmp){document.getElementById('h_period').innerHTML='Select date';return;}const d=new Date(lmp);const next=new Date(d);next.setDate(d.getDate()+cycle);const ovu=new Date(d);ovu.setDate(d.getDate()+Math.round(cycle/2));const fmt=x=>x.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});document.getElementById('h_period').innerHTML='Next Period: '+fmt(next)+'<br>Ovulation: '+fmt(ovu);}
+function pregCalc(){const lmp=document.getElementById('h_preg').value;if(!lmp){document.getElementById('h_pregres').innerHTML='Select LMP';return;}const d=new Date(lmp);const due=new Date(d);due.setDate(d.getDate()+280);document.getElementById('h_pregres').innerHTML='Due Date: '+due.toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});}
+function bmiCalc(){const h=+document.getElementById('h_h').value,w=+document.getElementById('h_w').value;if(!h||!w){document.getElementById('h_bmi').innerHTML='Enter height & weight';return;}const bmi=w/((h/100)**2);let cat=bmi<18.5?'Underweight':bmi<25?'Normal':bmi<30?'Overweight':'Obese';const lo=18.5*(h/100)**2,hi=24.9*(h/100)**2;document.getElementById('h_bmi').innerHTML='BMI: '+bmi.toFixed(1)+' - '+cat+'<br>Ideal: '+lo.toFixed(1)+'-'+hi.toFixed(1)+' kg';}
+function waterCalc(){const w=+document.getElementById('h_w').value||60;document.getElementById('h_water').innerHTML='Daily Water: ~'+(w*0.033).toFixed(2)+' L = '+Math.round((w*0.033)/0.25)+' glasses';}
+function calcCalorie(){const age=+document.getElementById('cal_age').value,h=+document.getElementById('cal_h').value,w=+document.getElementById('cal_w').value,act=+document.getElementById('cal_act').value,goal=+document.getElementById('cal_goal').value,gen=document.getElementById('cal_gender').value;if(!age||!h||!w){document.getElementById('cal_res').innerHTML='Enter age, height & weight';return;}let bmr=gen==='female'?(10*w+6.25*h-5*age-161):(10*w+6.25*h-5*age+5);let tdee=bmr*act;let target=tdee+goal;let protein=Math.round(w*1.6),carbs=Math.round(target*0.45/4),fat=Math.round(target*0.30/9);document.getElementById('cal_res').innerHTML='BMR: '+Math.round(bmr)+' kcal<br>TDEE: '+Math.round(tdee)+' kcal<br>Daily Target: '+Math.round(target)+' kcal<br>Protein: '+protein+'g | Carbs: '+carbs+'g | Fat: '+fat+'g';}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
+</script>
+</body>
+</html>
