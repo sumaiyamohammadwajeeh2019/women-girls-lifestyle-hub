@@ -1,6 +1,6 @@
 services:
     - type: web
-    name: women-lifestyle-hub
+    name: digital-film-making-studio
     env: static
     buildCommand: ""
     staticPublishPath: ./
@@ -8,3 +8,10 @@ services:
             - type: rewrite
         source: /*
         destination: /index.html
+    headers:
+            - path: /sw.js
+        name: Service-Worker-Allowed
+        value: /
+            - path: /*
+        name: Cache-Control
+        value: no-cache
